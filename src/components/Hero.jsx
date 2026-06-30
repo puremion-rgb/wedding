@@ -73,14 +73,18 @@ export default function Hero() {
 
       <svg
         className="hero-lines"
-        viewBox="0 0 24 24"
+        viewBox="0 0 100 150"
+        preserveAspectRatio="xMidYMid meet"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-          stroke="rgba(255,255,255,0.7)"
-          strokeWidth="0.3"
-          vectorEffect="non-scaling-stroke" /* 핵심: 크기가 커져도 얇은 선 유지 */
+          d="M 50 135
+             C 50 135, 8 90, 8 45
+             C 8 20, 28 8, 50 32
+             C 72 8, 92 20, 92 45
+             C 92 90, 50 135, 50 135 Z"
+          stroke="rgba(255, 255, 255, 0.85)"
+          strokeWidth="1.2" /* 네가 원했던 확실히 보이고 굵고 예쁜 선 두께 */
           fill="none"
         />
       </svg>
