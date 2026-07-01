@@ -1,71 +1,84 @@
 import React from "react";
-import useReveal from "../hooks/useReveal";
+// ✅ 1. assets 폴더에 넣은 지도 이미지 불러오기
+import mapImage from "../assets/cee895bb.png";
 
 export default function Location() {
-  const [ref, visible] = useReveal();
+  const locationName = "서울 신라호텔 영빈관";
+  const locationAddress = "서울특별시 중구 동호로 249";
+
+  const lat = 37.5559;
+  const lng = 127.0051;
+
+  const naverMapUrl = `https://map.naver.com/v5/search/${locationName}`;
+  const kakaoMapUrl = `https://map.kakao.com/link/map/${locationName},${lat},${lng}`;
 
   return (
     <section className="location-section">
-      <h3 className="section-heading">LOCATION</h3>
+      <h2 className="section-heading">Location</h2>
 
-      <div ref={ref} className={`reveal ${visible ? "is-visible" : ""}`}>
-        <p className="location-venue">더 플라자 지스텀하우스 (22층)</p>
-        <p className="location-addr">서울 중구 소공로 119</p>
+      <h3 className="location-venue">{locationName}</h3>
+      <p className="location-addr">{locationAddress}</p>
 
-        <div className="map-placeholder">
-          <span>카카오맵 · 네이버맵 연동 영역</span>
-        </div>
+      {/* ✅ 2. 텍스트를 지우고 <img> 태그로 교체 */}
+      <div className="map-placeholder">
+        <img
+          src={mapImage}
+          alt="서울 신라호텔 약도"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+      </div>
 
-        <button type="button" className="map-link">
-          📍 카카오맵 열기
-        </button>
+      <div className="map-links-container">
+        <a
+          href={naverMapUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="map-link naver"
+        >
+          네이버 지도
+        </a>
+        <a
+          href={kakaoMapUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="map-link kakao"
+        >
+          카카오맵
+        </a>
+      </div>
 
-        <div className="transit-block">
-          <h5>
-            <span className="icon-tag">자차</span>내비게이션
-          </h5>
-          <p>
-            '서울 웨스틴조선호텔' 검색
-            <br />
-            서울시 중구 소공로 106 서울 웨스틴조선호텔
-          </p>
-        </div>
-
-        <div className="transit-block">
-          <h5>
-            <span className="icon-tag">버스</span>버스 이용 시
-          </h5>
-          <p>
-            172 (우리은행종로지점 방면) · 서울광장역 하차 → 데미타스커피 왼쪽
-            방면 도보 5분
-            <br />
-            405 (롯데백화점 방면) · 서울광장역 하차 → 데미타스커피 왼쪽 방면
-            도보 5분
-            <br />
-            472 (을지로입구 방면) · 시청역 하차 → 도보 5분
-          </p>
-        </div>
-
-        <div className="transit-block">
-          <h5>
-            <span className="icon-tag">지하철</span>지하철 이용 시
-          </h5>
-          <p>
-            1호선(시청역) 시청역 11번 출구 → 10번 출구 도보 5분
-            <br />
-            2호선 (을지로입구역) 을지로입구역 4번 출구 → 10번 출구 도보 5분
-          </p>
-        </div>
-
-        <div className="transit-block">
-          <h5>
-            <span className="icon-tag">주차</span>주차 이용 시
-          </h5>
-          <p>
-            더 플라자 호텔 주차장 : 하객 3시간 무료 주차현장 주차 요원 안내를
-            받아주세요.
-          </p>
-        </div>
+      <div className="transit-block">
+        <h5>
+          <span className="icon-tag">지하철</span>
+        </h5>
+        <p>
+          3호선 동대입구역 5번 출구 (도보 3분)
+          <br />* 5번 출구 앞에서 호텔 무료 셔틀버스 탑승 가능
+        </p>
+      </div>
+      <div className="transit-block">
+        <h5>
+          <span className="icon-tag">버스</span>
+        </h5>
+        <p>
+          장충체육관 앞 정류장 하차
+          <br />
+          간선: 144, 301 / 지선: 7212
+        </p>
+      </div>
+      <div className="transit-block">
+        <h5>
+          <span className="icon-tag">주차</span>
+        </h5>
+        <p>
+          호텔 내 고객 주차장 이용 (하객 3시간 무료)
+          <br />* 만차 시 인근 장충단공원 공영주차장 이용 안내
+        </p>
       </div>
     </section>
   );

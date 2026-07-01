@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
 export default function Hero() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
 
   const togglePlay = () => {
@@ -25,7 +25,7 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
-      <audio ref={audioRef} loop src="/bgm.mp3" />
+      <audio ref={audioRef} autoPlay loop src="/bgm.mp3" />
 
       {/* 변경된 동그란 아이콘 버튼 */}
       <button
@@ -73,19 +73,49 @@ export default function Hero() {
 
       <svg
         className="hero-lines"
-        viewBox="0 0 100 150"
-        preserveAspectRatio="xMidYMid meet"
-        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 200"
+        preserveAspectRatio="xMidYMid slice"
       >
+        {/* 메인라인 */}
+
         <path
-          d="M 50 135
-             C 50 135, 8 90, 8 45
-             C 8 20, 28 8, 50 32
-             C 72 8, 92 20, 92 45
-             C 92 90, 50 135, 50 135 Z"
-          stroke="rgba(255, 255, 255, 0.85)"
-          strokeWidth="1.2" /* 네가 원했던 확실히 보이고 굵고 예쁜 선 두께 */
+          d="
+      M50 188
+
+      C50 188 4 118 4 54
+
+      C4 18 28 2 50 38
+
+      C72 2 96 18 96 54
+
+      C96 118 50 188 50 188
+    "
           fill="none"
+          stroke="rgba(255,255,255,.82)"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+
+        {/* 안쪽라인 */}
+
+        <path
+          d="
+      M50 181
+
+      C50 181 9 116 9 57
+
+      C9 25 30 10 50 42
+
+      C70 10 91 25 91 57
+
+      C91 116 50 181 50 181
+    "
+          fill="none"
+          stroke="rgba(255,255,255,.45)"
+          strokeWidth=".6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
 
