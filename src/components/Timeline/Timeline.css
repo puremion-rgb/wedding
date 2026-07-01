@@ -1,0 +1,71 @@
+/* ============================================
+   6. TIMELINE
+============================================ */
+.timeline-section {
+  padding: 5rem 2.2rem;
+  background: var(--paper);
+}
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+  margin-top: 2.6rem;
+}
+.timeline-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.timeline-row:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+.timeline-photo {
+  width: 42%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.timeline-photo.polaroid {
+  background: #fff;
+  padding: 8px 8px 22px;
+  border-radius: 2px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  width: 46%;
+}
+.timeline-photo.polaroid img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+.timeline-copy {
+  flex: 1;
+  padding-top: 0.3rem;
+}
+.timeline-chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  background: var(--green-pale);
+  color: var(--green-deep);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.8rem;
+}
+.timeline-row:nth-child(even) .timeline-chip {
+  background: var(--purple-pale);
+  color: var(--purple-deep);
+}
+.timeline-title {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+.timeline-desc {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}

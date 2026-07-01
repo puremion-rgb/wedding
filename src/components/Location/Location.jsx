@@ -1,6 +1,7 @@
 import React from "react";
 // ✅ 1. assets 폴더에 넣은 지도 이미지 불러오기
-import mapImage from "../assets/cee895bb.png";
+import mapImage from "../../assets/cee895bb.png";
+import "./Location.css";
 
 export default function Location() {
   const locationName = "서울 신라호텔 영빈관";
@@ -14,7 +15,7 @@ export default function Location() {
 
   return (
     <section className="location-section">
-      <h2 className="section-heading">Location</h2>
+      <h3 className="section-heading">LOCATION</h3>
 
       <h3 className="location-venue">{locationName}</h3>
       <p className="location-addr">{locationAddress}</p>

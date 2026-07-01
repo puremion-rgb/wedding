@@ -1,0 +1,30 @@
+/* ============================================
+   TOAST 알림 (Account 계좌 복사 / Closing 링크 복사에서 공용으로 사용)
+============================================ */
+.toast {
+  position: fixed;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  background: rgba(43, 42, 46, 0.92);
+  color: #fff;
+  font-family: var(--serif-kr);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: toastIn 0.25s var(--ease);
+}
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

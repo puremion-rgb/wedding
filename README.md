@@ -7,11 +7,12 @@
 - **컬러 블록 기반 스토리텔링**: 흰 배경에 콘텐츠만 나열하는 대신, 세이지 그린과 더스티 라벤더 두 가지 톤을 섹션마다 교차 배치해 스크롤할 때마다 화면의 분위기가 전환되도록 설계했습니다. 색의 전환 자체가 청첩장을 읽어 내려가는 리듬이 되도록 의도했습니다.
 - **풍부한 기능 구성**: 단순 정보 나열형 청첩장이 아니라, 실시간 카운트다운, 캘린더, 슬라이더 갤러리, 라이트박스, 아코디언, 방명록, 그리고 실제로 입력 가능한 RSVP 모달까지 — 상용 청첩장 플랫폼 수준의 인터랙션을 갖춘 한 페이지 애플리케이션을 목표로 했습니다.
 - **모바일 퍼스트(Mobile-First) 디자인**: 모바일 기기 환경에 최적화된 화면 비율과 가독성을 최우선으로 고려하여 설계되었습니다.
-- **유지보수 지향 아키텍처**: 13개 섹션을 각각 독립된 React 컴포넌트로 분리하고, 스크롤 reveal 로직은 재사용 가능한 커스텀 훅(`useReveal`)으로 추출해 코드의 재사용성과 확장성을 확보했습니다.
+- **유지보수 지향 아키텍처**: 14개 섹션을 각각 독립된 React 컴포넌트로 분리하고, 스크롤 reveal 로직은 재사용 가능한 커스텀 훅(`useReveal`)으로 추출해 코드의 재사용성과 확장성을 확보했습니다.
+- **컴포넌트 단위 CSS 분리**: 하나의 거대한 `index.css` 대신, 각 컴포넌트 폴더 안에 동일한 이름의 CSS 파일(`Hero/Hero.css`, `Family/Family.css` 등)을 두어 스타일과 컴포넌트를 1:1로 매칭했습니다. 여러 컴포넌트가 함께 쓰는 스타일(리빌 애니메이션, 모달, 토스트 등)은 `styles/` 폴더에 공용 파일로 분리해 중복을 없앴습니다.
 
 ## 2. 주요 구현 기능
 
-### 🧱 컴포넌트 기반 레이아웃 (13개 섹션)
+### 🧱 컴포넌트 기반 레이아웃 (14개 섹션)
 
 - **Hero (메인 커버)**: 풀스크린 배경 사진 위에 스크립트체("We are getting married") 문구를 단계적으로 페이드인시켜 첫인상을 연출합니다.
 - **Greeting (초대 문구, 라벤더 블록)**: 시구 인용과 신랑·신부 인사말, 손을 맞잡은 사진으로 구성된 섹션입니다.
@@ -19,6 +20,7 @@
 - **Calendar (캘린더 + 실시간 카운트다운)**: 결혼식 달의 달력을 직접 그려 예식일을 동그라미로 표시하고, `setInterval`로 매초 갱신되는 D-day 카운트다운(일/시/분/초)을 구현했습니다.
 - **Family (혼주 정보, 라벤더 블록)**: 신랑·신부 측 부모님 성함과 관계를 칩(Chip) 라벨과 함께 정리했고, 축하 연락하기 버튼을 배치했습니다.
 - **Timeline (커플 스토리)**: 두 사람이 만난 시점부터 프로포즈까지의 이야기를 좌우 교차 배치 레이아웃으로 구성했고, 일부 사진은 폴라로이드 프레임 스타일로 차별화했습니다.
+- **Q&A (신랑 신부 인터뷰, 라벤더 블록)**: 하객들에게 두 사람의 첫인상과 가치관 등 진솔한 이야기를 전하는 인터뷰 섹션입니다. 아코디언 UI를 적용해 질문을 탭하면 숨겨져 있던 답변이 부드럽게 펼쳐지도록 구현했습니다. `useReveal` 훅을 통해 스크롤 뷰 진입 시 자연스럽게 떠오르도록 구성했습니다.
 - **Gallery (웨딩 갤러리)**: 단일 슬라이더 형태의 갤러리이며, 하단 점(dot) 인디케이터로 사진을 전환하고 클릭 시 확대해 볼 수 있습니다.
 - **Location (오시는 길)**: 예식장 주소와 교통수단(자차/버스) 안내를 정리했습니다.
 - **Account (마음 전하실 곳)**: 신랑 측·신부 측 계좌를 분리해 원하는 쪽만 펼쳐볼 수 있고, 계좌번호 복사 버튼을 제공합니다.
@@ -43,7 +45,7 @@
 ## 4. 기술 스택 (Tech Stack)
 
 - **Library**: React.js (Hooks: `useState`, `useEffect`, `useRef`, `IntersectionObserver`, `setInterval`)
-- **Styling**: 기본 CSS3 (CSS 변수 기반 디자인 토큰)
+- **Styling**: 기본 CSS3 (CSS 변수 기반 디자인 토큰). 컴포넌트별 CSS 파일 + 공용(`styles/`) CSS로 분리 관리
 - **Typography**: Noto Serif KR, Cormorant Garamond (Google Fonts)
 
 ## 5. 파일 구조
@@ -51,30 +53,68 @@
 ```
 src/
 ├── App.jsx
-├── index.css
+├── main.jsx
 ├── hooks/
 │   └── useReveal.js
+├── assets/
+│   └── (웨딩 사진 등)
+├── styles/
+│   ├── global.css      # 폰트, reset, 컬러 토큰, .reveal / .eyebrow / .section-heading 등 전역·공용 스타일
+│   ├── modal.css        # Family / MessageBoard / Rsvp가 함께 쓰는 모달 공용 스타일
+│   └── toast.css        # Account / Closing가 함께 쓰는 토스트 알림 공용 스타일
 └── components/
-    ├── Hero.jsx
-    ├── Greeting.jsx
-    ├── DdayHero.jsx
-    ├── Calendar.jsx
-    ├── Family.jsx
-    ├── Timeline.jsx
-    ├── Gallery.jsx
-    ├── Location.jsx
-    ├── Account.jsx
-    ├── MessageBoard.jsx
-    ├── Information.jsx
-    ├── Rsvp.jsx
-    └── Closing.jsx
+    ├── Hero/
+    │   ├── Hero.jsx
+    │   └── Hero.css
+    ├── Greeting/
+    │   ├── Greeting.jsx
+    │   └── Greeting.css
+    ├── DdayHero/
+    │   ├── DdayHero.jsx
+    │   └── DdayHero.css
+    ├── Calendar/
+    │   ├── Calendar.jsx
+    │   └── Calendar.css
+    ├── Family/
+    │   ├── Family.jsx
+    │   └── Family.css      # 축하 연락하기 모달 전용 스타일 포함
+    ├── Timeline/
+    │   ├── Timeline.jsx
+    │   └── Timeline.css
+    ├── Qna/
+    │   ├── Qna.jsx
+    │   └── Qna.css
+    ├── Gallery/
+    │   ├── Gallery.jsx
+    │   └── Gallery.css
+    ├── Location/
+    │   ├── Location.jsx
+    │   └── Location.css
+    ├── Account/
+    │   ├── Account.jsx
+    │   └── Account.css
+    ├── MessageBoard/
+    │   ├── MessageBoard.jsx
+    │   └── MessageBoard.css  # 방명록 작성 모달 전용 스타일 포함
+    ├── Information/
+    │   ├── Information.jsx
+    │   └── Information.css
+    ├── Rsvp/
+    │   ├── Rsvp.jsx
+    │   └── Rsvp.css          # RSVP 모달 전용 스타일 포함
+    └── Closing/
+        ├── Closing.jsx
+        └── Closing.css
 ```
+
+> 각 컴포넌트는 자기 자신의 CSS 파일을 직접 `import "./ComponentName.css"` 형태로 불러오며, 여러 컴포넌트가 공유하는 스타일(리빌 애니메이션, 모달, 토스트)만 `styles/` 폴더에서 별도로 import합니다.
 
 ## 6. 실행 방법 (Getting Started)
 
-1. 위 파일들을 동일한 디렉토리 구조로 React 프로젝트의 `src` 폴더에 넣습니다.
-2. `Hero.jsx`, `Greeting.jsx`, `Timeline.jsx`, `Gallery.jsx`, `Closing.jsx`, `Information.jsx`의 이미지 `src`를 실제 웨딩 사진 경로로 교체합니다.
-3. `Calendar.jsx` 상단의 `WEDDING_DATE` 값을 실제 예식 일시로 변경하면 캘린더와 카운트다운에 자동 반영됩니다.
-4. `Hero.jsx`, `Family.jsx`, `Rsvp.jsx`, `Closing.jsx` 등에 하드코딩된 신랑·신부 성함, 혼주 성함, 예식장 정보를 실제 정보로 교체합니다.
-5. `Location.jsx`의 `.map-placeholder` 영역에 카카오맵 SDK를 연동하면 완성됩니다.
-6. `npm install` 후 `npm start`(또는 사용 중인 빌드 도구의 개발 서버 명령)로 실행합니다.
+1. 위 파일들을 동일한 디렉토리 구조(컴포넌트별 폴더 + CSS 포함)로 React 프로젝트의 `src` 폴더에 넣습니다.
+2. `components/Hero/Hero.jsx`, `Greeting/Greeting.jsx`, `Timeline/Timeline.jsx`, `Gallery/Gallery.jsx`, `Closing/Closing.jsx`, `Information/Information.jsx`의 이미지 `src`를 실제 웨딩 사진 경로로 교체합니다.
+3. `components/Calendar/Calendar.jsx` 상단의 `WEDDING_DATE` 값을 실제 예식 일시로 변경하면 캘린더와 카운트다운에 자동 반영됩니다.
+4. `components/Hero/Hero.jsx`, `Family/Family.jsx`, `Rsvp/Rsvp.jsx`, `Closing/Closing.jsx` 등에 하드코딩된 신랑·신부 성함, 혼주 성함, 예식장 정보를 실제 정보로 교체합니다.
+5. `components/Location/Location.jsx`의 `.map-placeholder` 영역에 카카오맵 SDK를 연동하면 완성됩니다.
+6. 각 컴포넌트의 스타일을 수정하고 싶다면 `index.css`가 아니라 해당 컴포넌트 폴더 안의 CSS 파일(예: `components/Hero/Hero.css`)을 수정하면 됩니다. 여러 컴포넌트가 공유하는 스타일은 `styles/global.css`, `styles/modal.css`, `styles/toast.css`에서 관리합니다.
+7. `npm install` 후 `npm start`(또는 사용 중인 빌드 도구의 개발 서버 명령)로 실행합니다.

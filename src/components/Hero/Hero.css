@@ -1,0 +1,250 @@
+/* ============================================
+   1. HERO
+============================================ */
+body,
+html {
+  overflow-x: hidden; /* 가로 스크롤바 절대 생성 금지 */
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden; /* 삐져나간 꽃잎과 거대 하트 프레임을 깔끔하게 잘라냄 */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--green-deep), var(--purple-deep));
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  /* 줌 효과 제거, 부드럽게 나타나는 fadeInImg만 남김 */
+  animation: fadeInImg 1.4s var(--ease) forwards;
+}
+
+/* 3. 음악 재생 버튼 스타일 추가 */
+/* ============================================
+   추가 기능: 음악 버튼 디자인 (재생/이퀄라이저)
+============================================ */
+.bgm-btn {
+  position: absolute;
+  top: 1rem; /* 상단 구석으로 밀착 */
+  right: 1rem; /* 우측 구석으로 밀착 */
+  z-index: 50;
+  width: 24px; /* 기존보다 훨씬 작고 앙증맞은 24px */
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.6);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s var(--ease);
+}
+
+.bgm-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* 재생 삼각형 아이콘 (버튼 크기에 맞춰 초소형으로 축소) */
+.play-icon {
+  width: 0;
+  height: 0;
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  border-left: 5px solid #fff;
+  margin-left: 2px;
+}
+
+/* 이퀄라이저 막대 (버튼 크기에 맞춰 초소형으로 축소) */
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 9px;
+  height: 9px;
+}
+
+.equalizer .bar {
+  width: 1px; /* 막대 두께도 아주 얇게 */
+  background-color: #fff;
+  animation: eq-bounce 0.8s infinite alternate ease-in-out;
+}
+
+.equalizer .bar:nth-child(1) {
+  animation-delay: 0.1s;
+  height: 60%;
+}
+.equalizer .bar:nth-child(2) {
+  animation-delay: 0.3s;
+  height: 100%;
+}
+.equalizer .bar:nth-child(3) {
+  animation-delay: 0s;
+  height: 80%;
+}
+.equalizer .bar:nth-child(4) {
+  animation-delay: 0.4s;
+  height: 50%;
+}
+
+@keyframes eq-bounce {
+  0% {
+    height: 30%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+/* ============================================
+   추가 기능: 흩날리는 꽃잎 효과 (Petals)
+============================================ */
+.petals-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  top: -10%;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 15px 0 15px 0;
+  animation:
+    fall linear infinite,
+    sway 2s ease-in-out infinite alternate;
+}
+@keyframes fall {
+  0% {
+    top: -10%;
+    transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    transform: translateX(300px) rotate(360deg); /* ⬅️ 이 부분이 바람 효과의 핵심 */
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(25px) rotate(45deg);
+  }
+}
+
+@keyframes fadeInImg {
+  to {
+    opacity: 1;
+  }
+}
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(74, 59, 82, 0.1) 0%,
+    rgba(74, 59, 82, 0.05) 45%,
+    rgba(43, 42, 46, 0.75) 100%
+  );
+  z-index: 1;
+}
+.hero-lines {
+  position: absolute;
+
+  width: 145%;
+  height: 145%;
+
+  left: -22%;
+  top: -16%;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  animation: frameFade 1.2s var(--ease) 0.3s forwards;
+}
+@keyframes frameFade {
+  from {
+    opacity: 0;
+    transform: scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 0 2rem 4rem;
+}
+.hero-script {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 1.9rem;
+  font-weight: 400;
+  margin-bottom: 1.3rem;
+  opacity: 0;
+  animation: heroFade 1s var(--ease) 0.7s forwards;
+}
+.hero-info {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  opacity: 0;
+  animation: heroFade 1s var(--ease) 1s forwards;
+}
+.hero-info .sep {
+  opacity: 0.5;
+}
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

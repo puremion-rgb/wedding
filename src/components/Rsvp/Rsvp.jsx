@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import useReveal from "../hooks/useReveal";
+import useReveal from "../../hooks/useReveal";
+import "./Rsvp.css";
+import "../../styles/modal.css";
 
 export default function Rsvp() {
   const [ref, visible] = useReveal();
@@ -44,7 +46,8 @@ export default function Rsvp() {
           2026년 8월 1일
           <br />
           토요일 오후 12시
-          <br />더 플라자 지스텀하우스 (22층)
+          <br />
+          서울 신라호텔 영빈관
         </p>
         <button
           type="button"

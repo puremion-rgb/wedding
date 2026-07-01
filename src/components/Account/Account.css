@@ -1,0 +1,79 @@
+/* ============================================
+   9. ACCOUNT (accordion)
+============================================ */
+.account-section {
+  padding: 5rem 2.2rem;
+  background: var(--paper);
+  text-align: center;
+}
+.account-lead {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin-bottom: 2.4rem;
+}
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.acc-item {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: left;
+}
+.acc-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  background: #fff;
+  border: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+.acc-btn .chev {
+  transition: transform 0.3s var(--ease);
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+.acc-btn[aria-expanded="true"] .chev {
+  transform: rotate(180deg);
+}
+.acc-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease);
+  background: var(--green-pale);
+}
+.acc-panel.open {
+  max-height: 160px;
+}
+.acc-panel-inner {
+  padding: 1rem 1.2rem 1.2rem;
+}
+.acc-panel .bank {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--green-deep);
+  margin-bottom: 0.2rem;
+}
+.acc-panel .owner {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.8rem;
+}
+.acc-copy {
+  font-size: 0.74rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--ink-soft);
+}

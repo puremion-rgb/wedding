@@ -1,0 +1,72 @@
+/* ============================================
+   12. RSVP
+============================================ */
+.rsvp-section {
+  padding: 5rem 2.2rem 6rem;
+  background: var(--paper);
+  text-align: center;
+}
+.rsvp-caption {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 2.4rem;
+}
+.rsvp-card {
+  background: linear-gradient(160deg, var(--green-pale), var(--purple-pale));
+  border-radius: 8px;
+  padding: 2rem 1.6rem;
+}
+.rsvp-names {
+  font-size: 0.95rem;
+  color: var(--plum);
+  margin-bottom: 1.4rem;
+}
+.rsvp-names .heart {
+  color: var(--purple);
+  margin: 0 0.5rem;
+}
+.rsvp-details {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.9;
+  margin-bottom: 1.6rem;
+}
+.rsvp-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* ============================================
+   RSVP MODAL — Rsvp 전용 요소 (modal-backdrop/box/close/title/sub/field/submit 등
+   공용 클래스는 ../../styles/modal.css 참고)
+============================================ */
+.modal-field .req {
+  color: var(--purple);
+}
+.modal-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+.modal-toggle button {
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.modal-toggle button.selected {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}

@@ -1,0 +1,150 @@
+/* ============================================
+   5. FAMILY INFO (purple block)
+============================================ */
+.family-section {
+  padding: 4.5rem 2.2rem;
+  background: var(--purple-pale);
+}
+.family-group {
+  text-align: center;
+}
+.family-group + .family-group {
+  margin-top: 2.6rem;
+  padding-top: 2.6rem;
+  border-top: 1px solid rgba(122, 106, 137, 0.2);
+}
+.family-chip {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: var(--purple);
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+.family-name-kr {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--plum);
+}
+.family-name-en {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--purple-deep);
+  margin-bottom: 1.1rem;
+}
+.family-parents {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.family-parents .rel {
+  font-size: 0.78rem;
+  color: #9b95a0;
+  margin: 0 0.3rem;
+}
+.family-contact-btn {
+  margin-top: 2.6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  padding: 1rem 1.3rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* ============================================
+   축하 연락하기 모달 (modal-backdrop/box/close/title/sub 등 공용 클래스는
+   ../../styles/modal.css 참고)
+============================================ */
+.contact-modal {
+  padding-top: 2.2rem;
+}
+.contact-sub {
+  color: var(--green-deep) !important;
+  font-size: 0.82rem !important;
+}
+.contact-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.4rem;
+}
+.contact-tab {
+  padding: 0.75rem;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+.contact-tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--green-deep);
+  font-weight: 600;
+}
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.contact-card {
+  background: var(--green-pale);
+  border-radius: 6px;
+  padding: 1rem 1.2rem 1.1rem;
+}
+.contact-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.8rem;
+}
+.contact-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.contact-role {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+}
+.contact-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.contact-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.5rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.contact-action-btn:hover {
+  opacity: 0.85;
+}
+.contact-action-btn.sms {
+  background: var(--green);
+  color: #fff;
+}
+.contact-action-btn.call {
+  background: #4a4a4a;
+  color: #fff;
+}

@@ -1,0 +1,86 @@
+/* ============================================
+   4. CALENDAR + COUNTDOWN
+============================================ */
+.calendar-section {
+  padding: 4.5rem 2.2rem;
+  background: var(--paper);
+  text-align: center;
+}
+.calendar-date-kr {
+  font-size: 0.98rem;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.calendar-date-en {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: 2.2rem;
+}
+.calendar-grid {
+  border-top: 1px solid var(--line);
+  padding-top: 1.4rem;
+}
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.8rem;
+}
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 0.7rem;
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+.calendar-days .day-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calendar-days .day-cell.target span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+}
+.calendar-divider {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+.countdown-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+.countdown-cell {
+  background: var(--green-pale);
+  border-radius: 4px;
+  padding: 0.9rem 0.3rem;
+}
+.countdown-num {
+  font-family: var(--serif-en);
+  font-size: 1.5rem;
+  color: var(--green-deep);
+  font-weight: 500;
+}
+.countdown-unit {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-top: 0.2rem;
+}
+.countdown-caption {
+  margin-top: 1.6rem;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+.countdown-caption b {
+  color: var(--purple-deep);
+}

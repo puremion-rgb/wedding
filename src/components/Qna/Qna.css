@@ -1,0 +1,103 @@
+/* ============================================
+   Q&A (Our Story)
+============================================ */
+.qna-section {
+  padding: 5rem 2.2rem;
+  background: var(--purple-pale);
+  text-align: center;
+}
+.qna-caption {
+  font-size: 0.85rem;
+  color: var(--purple-deep);
+  margin-bottom: 2.4rem;
+}
+.qna-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.qna-item {
+  border: 1px solid rgba(155, 138, 168, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: left;
+}
+.qna-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem;
+  background: #fff;
+  border: none;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--ink);
+  font-weight: 500;
+  cursor: pointer;
+  gap: 0.8rem;
+}
+.qna-q-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.5;
+}
+.qna-q-mark {
+  color: var(--green-deep);
+  font-family: var(--serif-en);
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+  font-style: italic;
+}
+.qna-btn .chev {
+  transition: transform 0.3s var(--ease);
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.qna-btn[aria-expanded="true"] .chev {
+  transform: rotate(180deg);
+}
+.qna-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease);
+  background: var(--green-pale);
+}
+.qna-panel.open {
+  max-height: 400px;
+}
+.qna-panel-inner {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.qna-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.8rem 0;
+}
+.qna-answer.bride-answer {
+  border-top: 1px solid rgba(155, 138, 168, 0.2);
+}
+.qna-who.groom {
+  font-family: var(--serif-en);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--green-deep);
+  font-weight: 600;
+}
+.qna-who.bride {
+  font-family: var(--serif-en);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--purple-deep);
+  font-weight: 600;
+}
+.qna-answer p {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}

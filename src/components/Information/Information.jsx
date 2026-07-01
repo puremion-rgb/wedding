@@ -1,5 +1,6 @@
 import React from "react";
-import useReveal from "../hooks/useReveal";
+import useReveal from "../../hooks/useReveal";
+import "./Information.css";
 
 export default function Information() {
   const [ref, visible] = useReveal();

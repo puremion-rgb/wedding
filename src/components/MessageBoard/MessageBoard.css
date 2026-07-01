@@ -1,0 +1,82 @@
+/* ============================================
+   10. MESSAGE BOARD (purple block)
+============================================ */
+.message-section {
+  padding: 5rem 2.2rem;
+  background: var(--purple-pale);
+}
+.message-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--purple-deep);
+  margin-bottom: 2.4rem;
+}
+.message-card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 1.3rem 1.4rem;
+  box-shadow: 0 4px 16px rgba(74, 59, 82, 0.08);
+}
+.message-card p {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.message-card .sign {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.message-write-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1.6rem;
+  padding: 1rem;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* 메시지 카드 간격 */
+.message-card + .message-card {
+  margin-top: 0.9rem;
+}
+
+/* ============================================
+   메시지 작성 모달 추가 스타일 (modal-backdrop/box/close/title/sub/field/submit 등
+   공용 클래스는 ../../styles/modal.css 참고)
+============================================ */
+.modal-field input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+.message-textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  resize: none;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.message-textarea:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+.textarea-count {
+  text-align: right;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin-top: 0.3rem;
+}

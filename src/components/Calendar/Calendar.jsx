@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import useReveal from "../hooks/useReveal";
+import useReveal from "../../hooks/useReveal";
+import "./Calendar.css";
 
 const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 const WEDDING_DATE = new Date("2026-08-01T12:00:00+09:00");
